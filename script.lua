@@ -1,4 +1,3 @@
---// Rayfield
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -13,11 +12,9 @@ local Window = Rayfield:CreateWindow({
 
 local MainTab = Window:CreateTab("Main", 4483362458)
 
---// Services
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
---// Find Tycoon
 local userTycoon = (function()
 	for _, v in pairs(workspace:GetChildren()) do
 		if v:IsA("Folder") and v.Name:match("Tycoon%d") then
@@ -37,7 +34,6 @@ if not userTycoon then
 	return
 end
 
---// Variables
 local AutoBuy = false
 local AutoUpgrade = false
 local AutoFruit = false
@@ -166,12 +162,10 @@ local function removeTree(obj)
 	end
 end
 
--- initial scan
 for _, v in ipairs(workspace:GetDescendants()) do
 	addTree(v)
 end
 
--- realtime update
 workspace.DescendantAdded:Connect(addTree)
 workspace.DescendantRemoving:Connect(removeTree)
 
